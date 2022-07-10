@@ -6,7 +6,7 @@
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -26,20 +26,26 @@
     "eslint-plugin-vue": "^9.0.0",
     "husky": "^8.0.1",
     "jsdom": "^20.0.0",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.5.1",
     "vite": "^2.9.12",
     "vitest": "^0.15.1"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "cz-customizable"
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint", 
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS" 
-    }
-  }
-  
+  "lint-staged": {
+    "*.{scss,vue}": [
+      "stylelint --fix"
+  ],
+  "*.{js,ts,vue}": [
+      "vue-cli-service lint"
+  ]
+},
+"gitHooks": {
+  "pre-commit": "lint-staged",
+  "commit-msg": "commitlint -eV"
+}
 }
