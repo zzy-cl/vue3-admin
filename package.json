@@ -7,7 +7,6 @@
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -35,5 +34,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint", 
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS" 
+    }
   }
+  
 }
