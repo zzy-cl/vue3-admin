@@ -1,4 +1,4 @@
-// 提交代码：使用 npx cz 命令
+// 提交代码：使用 `npx cz`或者`git cz` 命令
 // 相关配置：https://github.com/leoforfree/cz-customizable
 module.exports = {
     types: [
